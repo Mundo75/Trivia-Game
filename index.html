@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Trivia Game</title>
+    <link href="https://fonts.googleapis.com/css?family=Fontdiner+Swanky" rel="stylesheet">
+    <link rel="stylesheet" href="assets/style/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12"></div>
+            <div class="col-md-12"></div>
+        </div>
+        <div class="row" id="questionDiv">
+            <div class="col-md-2"></div>
+            <div class="col-md-8 gameBoard">
+                <div class="row">
+                    <div class="col-md-12 display-2 text-center">
+                        <div id="title">Animal Trivia</div>
+                    </div> 
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="quizDiv text-center">
+                            <p id="quizQuestion"></p><br>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class= "col-md-6">
+                        <label class="option align-middle"><input type="radio" name="option" value="a"><span id="answerChoice1"></span></label>
+                        <label class="option"><input type="radio" name="option" value="b"><span id="answerChoice2"></span></label>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="option"><input type="radio" name="option" value="c"><span id="answerChoice3"></span></label>
+                        <label class="option"><input type="radio" name="option" value="d"><span id="answerChoice4"></span></label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 buttonDiv text-center">
+                        <button id="nextButton" class="next-btn" onclick="loadNextQuestion();">Next Question</button>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-12">
+                        <p id="image"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+        <div class="row">
+                <div class="col-md-12">
+                    <div id="result" class="container result" style="display:none;"></div>
+                </div>
+        </div>
+            
+    </div>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/logic/logic.js"></script>  
+</body>
+</html>

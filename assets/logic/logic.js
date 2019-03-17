@@ -1,0 +1,181 @@
+//$(document).ready(function() {
+
+
+
+
+//create object array of trivia questions
+
+
+var questions = [{
+
+    "question": "What animal has the longest lifespan?",
+    "correctAnswer": "c",
+    "choice1": "Elephant",
+    "choice2": "Blue Whale",
+    "choice3": "Giant Tortoise",
+    "choice4": "Locust",
+    "imageCorrect": "",
+    "imageWrong": "",
+    "sound": "",
+
+}, {
+    "question": "What is the only mammal capable of true flight?",
+    "correctAnswer": "b",
+    "choice1": "Flying Squirrel",
+    "choice2": "Bat",
+    "choice3": "Ocelot",
+    "choice4": "Humming Bird", 
+    "imageCorrect": "",
+    "imageWrong": "",
+    "sound": "",
+}, {
+    "question": "What is the fastest flying bird in the world?",
+    "correctAnswer": "c",
+    "choice1": "Happy Eagle",
+    "choice2": "Horned Sungem",
+    "choice3": "Peregrine Falcon",
+    "choice4": "Spin-tailed Swift", 
+    "imageCorrect": "",
+    "imageWrong": "",
+    "sound": "",
+}, {
+    "question": "A newborn kangaroo is about the size of a ...?",
+    "correctAnswer": "a",
+    "choice1": "Lima Bean",
+    "choice2": "Plum",
+    "choice3": "Grapefruit",
+    "choice4": "Watermelon", 
+    "imageCorrect": "",
+    "imageWrong": "",
+    "sound": "",
+}, {
+    "question": "What is the gestation period of a blue whale?",
+    "correctAnswer": "d",
+    "choice1": "4-6 Months",
+    "choice2": "2 Years",
+    "choice3": "16-18 Months",
+    "choice4": "10-12 Months", 
+    "imageCorrect": "",
+    "imageWrong": "",
+    "sound": "",
+}, {
+    "question": "What is the smallest mammal in the world?",
+    "correctAnswer": "d",
+    "choice1": "Western Harvest Mouse",
+    "choice2": "Numbat",
+    "choice3": "Pygmy Marmoset",
+    "choice4": "Bumblebee Bat", 
+    "imageCorrect": "",
+    "imageWrong": "",
+    "sound": "",
+}, {
+    "question": "What is the largest of the great apes?",
+    "correctAnswer": "a", 
+    "choice1": "Mountain Gorilla",
+    "choice2": "Orangutan",
+    "choice3": "Western Lowland Gorilla",
+    "choice4": "Eastern Lowland Gorilla",
+    "imageCorrect": "",
+    "imageWrong": "",
+    "sound": "",
+}, {
+    "question": "What is the world's most poisonous spider?",
+    "correctAnswer": "b", 
+    "choice1": "Brown Recluse",
+    "choice2": "Brazillian Wandering Spider",
+    "choice3": "Sydney Funnel Spider",
+    "choice4": "Daddy-Longlegs",
+    "imageCorrect": "",
+    "imageWrong": "",
+    "sound": "",
+}, {
+    "question": "How many times can a hummingbird flap its wings per second?",
+    "correctAnswer": "c", 
+    "choice1": "20",
+    "choice2": "40",
+    "choice3": "80",
+    "choice4": "160",
+    "imageCorrect": "",
+    "imageWrong": "",
+    "sound": "",
+}, {
+    "question": "What animal has the highest blood pressure?",
+    "correctAnswer": "d", 
+    "choice1": "Giraffe",
+    "choice2": "Blue Whale",
+    "choice3": "Elephant",
+    "choice4": "Flea",
+    "imageCorrect": "",
+    "imageWrong": "",
+    "sound": "",
+}];
+
+var currentQuestion = 0;
+var score = 0;
+var totalQuestions = questions.length;
+
+var quizWindow = document.getElementById("questionDiv");
+var quizText = document.getElementById("quizQuestion");
+var resultWindow = document.getElementById("result");
+var opt1 = document.getElementById("answerChoice1"); 
+var opt2 = document.getElementById("answerChoice2");
+var opt3 = document.getElementById("answerChoice3");
+var opt4 = document.getElementById("answerChoice4");
+
+function loadQuestion (questionIndex) {
+    var q = questions[questionIndex];
+    quizText.textContent = (questionIndex +1) + ") " + q.question; 
+    opt1.textContent = q.choice1;
+    opt2.textContent = q.choice2;
+    opt3.textContent = q.choice3;
+    opt4.textContent = q.choice4;
+
+}
+
+function loadNextQuestion () {
+    var selectedChoice = document.querySelector("input[type=radio]:checked");
+
+    if (!selectedChoice) {
+        alert("Choose your answer");
+        return;
+
+    }
+    var answer = selectedChoice.value; 
+
+    if (questions[currentQuestion].CorrectAnswer == answer) {
+        score += 1;
+
+    }
+    selectedChoice.checked = false;
+    currentQuestion++;
+    if (currentQuestion == totalQuestions -1) {
+
+        nextButton.textContent = "Finish";
+    }
+
+    if (currentQuestion == totalQuestions) {
+        quizWindow.style.display = "none";
+        resultWindow.style.display = "";
+        resultWindow.textContent = "Your Score: " + score + "/10";
+        return;
+    }
+    loadQuestion(currentQuestion);
+}
+ loadQuestion(currentQuestion);
+
+//Initialize game - click event to start questions
+
+//generate a random question and display in the DOM
+
+//store player answer and determine if correct or not
+
+//if correct update score, alert correct, display animal image and move on to next question
+
+//Reset timer
+
+//if incorrect update score, alert incorrect, display image and move on to next question
+
+//Reset timer
+
+//after last question calculate/display final score
+
