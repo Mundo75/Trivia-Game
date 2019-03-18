@@ -1,7 +1,3 @@
-//$(document).ready(function() {
-
-
-
 
 //create object array of trivia questions
 
@@ -126,6 +122,7 @@ var opt1 = document.getElementById("answerChoice1");
 var opt2 = document.getElementById("answerChoice2");
 var opt3 = document.getElementById("answerChoice3");
 var opt4 = document.getElementById("answerChoice4");
+var checkedDefault = document.getElementById("defaultChecked");
 var timerDiv = document.getElementById("timerId");
 var submitButton = document.getElementById("nextButton");
 
@@ -168,12 +165,8 @@ buttonStart.onclick = function initiateGame () {
    
 }
 
-
-
-
-
-
 function loadQuestion (questionIndex) {
+    checkedDefault.checked = true;
     var q = questions[questionIndex];
     quizText.textContent = (questionIndex +1) + ") " + q.question; 
     opt1.textContent = q.choice1;
@@ -184,29 +177,24 @@ function loadQuestion (questionIndex) {
 }
 
 
-
-
-
-
-
 function loadNextQuestion () {
+    
     countDown();
+    
+
     var selectedChoice = document.querySelector("input[type=radio]:checked");
 
-    if (!selectedChoice && questionTime === 0) {
-        score;
-        currentQuestion++;
-
-    }
-   
     var answer = selectedChoice.value; 
 
     if (questions[currentQuestion].correctAnswer == answer) {
         score++;
 
     }
-    selectedChoice.checked = false;
-    currentQuestion++;
+        //selectedChoice.checked = false;
+        checkedDefault.checked = true;
+        currentQuestion++;
+    
+
     if (currentQuestion == totalQuestions -1) {
 
         nextButton.textContent = "Finish";
