@@ -85,7 +85,7 @@ var questions = [{
     "imageWrong": "",
     "sound": "",
 }, {
-    "question": "How many times can a hummingbird flap its wings per second?",
+    "question": "How many times can a hummingbird flap its wings /sec?",
     "correctAnswer": "c", 
     "choice1": "20",
     "choice2": "40",
@@ -96,7 +96,7 @@ var questions = [{
     "sound": "",
 }, {
     "question": "What animal has the highest blood pressure?",
-    "correctAnswer": "d", 
+    "correctAnswer": "a", 
     "choice1": "Giraffe",
     "choice2": "Blue Whale",
     "choice3": "Elephant",
@@ -116,7 +116,8 @@ var quizWindow = document.getElementById("questionDiv");
 var quizText = document.getElementById("quizQuestion");
 var startScreen = document.getElementById("startPageId")
 var gameScreen = document.getElementById("gameBoardId")
-var resultWindow = document.getElementById("result");
+var resultWindow = document.getElementById("resultContainerID");
+var endWindow = document.getElementById("endScreen");
 var buttonStart = document.getElementById("startButton");
 var opt1 = document.getElementById("answerChoice1"); 
 var opt2 = document.getElementById("answerChoice2");
@@ -125,7 +126,15 @@ var opt4 = document.getElementById("answerChoice4");
 var checkedDefault = document.getElementById("defaultChecked");
 var timerDiv = document.getElementById("timerId");
 var submitButton = document.getElementById("nextButton");
+var buttonRestart = document.getElementById("restartButton");
 
+buttonRestart.onclick = function restartGame () {
+    endWindow.style.display = "None";
+    startScreen.style.display = "initial";
+    score = 0;
+    currentQuestion = 0;
+    
+}
 
 function countDown () {
     clearInterval(count);
@@ -153,6 +162,7 @@ function decrement () {
 function stop () {
     clearInterval(count);
     questionTime = 10;
+    
 }
     
    
@@ -201,14 +211,24 @@ function loadNextQuestion () {
     }
 
     if (currentQuestion == totalQuestions) {
-        quizWindow.style.display = "none";
-        resultWindow.style.display = "";
+        gameScreen.style.display = "none";
+        endWindow.style.display = "";
+        //buttonRestart.style.display = "";
         resultWindow.textContent = "Your Score: " + score + "/10";
         return;
+    
+    }
+
+    if (score >= 7) {
+        $("#fail").attr("src", "assets/images/win.jpg");
+    } else {
+        $("#fail").attr("src", "assets/images/fail.jpg");
     }
     loadQuestion(currentQuestion);
 }
  loadQuestion(currentQuestion);
+
+ 
 
 //Initialize game - click event to start questions
 
