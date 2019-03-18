@@ -17,8 +17,22 @@
             <div class="col-md-12"></div>
         </div>
         <div class="row" id="questionDiv">
-            <div class="col-md-2"></div>
-            <div class="col-md-8 gameBoard">
+            <div class="col-md-2"></div>           
+            <div class="col-md-8 startPage" id="startPageId" style="display:initial">
+                <div class="row">
+                    <div class="col-md-12 display-4 text-center" id="startTitle">
+                        <div id="titleStart">Animal Trivia</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center landingPage" id="landingPageDiv">
+                        <img src="assets/images/start.jpg" alt="start pic" id="startPic">
+                        <button type="button" class="btn btn-danger btn-lg btn-block" id="startButton">Click Here to Start
+                        Quiz!!!</button>
+                    </div>
+                </div>    
+            </div>   
+            <div class="col-md-8 gameBoard" id="gameBoardId" style="display:none;">
                 <div class="row">
                     <div class="col-md-12 display-2 text-center">
                         <div id="title">Animal Trivia</div>
@@ -27,8 +41,13 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="quizDiv text-center">
-                            <p id="quizQuestion"></p><br>
+                            <p id="quizQuestion"></p>
                         </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <div class="timer" id="timerId"></div>
                     </div>
                 </div>
                 <div class="row">
@@ -40,10 +59,10 @@
                         <label class="option"><input type="radio" name="option" value="c"><span id="answerChoice3"></span></label>
                         <label class="option"><input type="radio" name="option" value="d"><span id="answerChoice4"></span></label>
                     </div>
-                </div>
+                </div><br>
                 <div class="row">
                     <div class="col-md-12 buttonDiv text-center">
-                        <button id="nextButton" class="next-btn" onclick="loadNextQuestion();">Next Question</button>
+                        <button id="nextButton" class="next-btn">Next Question</button>
                     </div>
                 </div>
                 

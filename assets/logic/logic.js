@@ -112,15 +112,66 @@ var questions = [{
 
 var currentQuestion = 0;
 var score = 0;
+var questionTime = 10;
+var count;
 var totalQuestions = questions.length;
 
 var quizWindow = document.getElementById("questionDiv");
 var quizText = document.getElementById("quizQuestion");
+var startScreen = document.getElementById("startPageId")
+var gameScreen = document.getElementById("gameBoardId")
 var resultWindow = document.getElementById("result");
+var buttonStart = document.getElementById("startButton");
 var opt1 = document.getElementById("answerChoice1"); 
 var opt2 = document.getElementById("answerChoice2");
 var opt3 = document.getElementById("answerChoice3");
 var opt4 = document.getElementById("answerChoice4");
+var timerDiv = document.getElementById("timerId");
+var submitButton = document.getElementById("nextButton");
+
+
+function countDown () {
+    clearInterval(count);
+    count = setInterval(decrement, 1000);
+}
+function decrement () {
+
+    questionTime--;
+    timerDiv.innerHTML = "Time Left:  " + questionTime + " Seconds";
+
+    nextButton.onclick = function submitAnswer () {
+        stop();
+        loadNextQuestion();
+    }
+
+    if (questionTime === 0) {
+        stop();
+        loadNextQuestion();
+        
+    }
+
+    
+   
+}
+function stop () {
+    clearInterval(count);
+    questionTime = 10;
+}
+    
+   
+     
+buttonStart.onclick = function initiateGame () {
+
+   startScreen.style.display = "none";
+   gameScreen.style.display = "";
+   countDown();
+   
+}
+
+
+
+
+
 
 function loadQuestion (questionIndex) {
     var q = questions[questionIndex];
@@ -132,18 +183,26 @@ function loadQuestion (questionIndex) {
 
 }
 
+
+
+
+
+
+
 function loadNextQuestion () {
+    countDown();
     var selectedChoice = document.querySelector("input[type=radio]:checked");
 
-    if (!selectedChoice) {
-        alert("Choose your answer");
-        return;
+    if (!selectedChoice && questionTime === 0) {
+        score;
+        currentQuestion++;
 
     }
+   
     var answer = selectedChoice.value; 
 
-    if (questions[currentQuestion].CorrectAnswer == answer) {
-        score += 1;
+    if (questions[currentQuestion].correctAnswer == answer) {
+        score++;
 
     }
     selectedChoice.checked = false;
