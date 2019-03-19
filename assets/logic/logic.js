@@ -131,6 +131,7 @@ var buttonRestart = document.getElementById("restartButton");
 buttonRestart.onclick = function restartGame () {
     endWindow.style.display = "None";
     startScreen.style.display = "initial";
+    stop();
     score = 0;
     currentQuestion = 0;
     
